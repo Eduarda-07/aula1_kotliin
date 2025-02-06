@@ -17,11 +17,27 @@ class Paciente {
         println("RESULTADOS")
         println("---------------------------------------")
         println("NOME: $nome")
+        println("IDADE: ${calcularIdade()}")
         println("PESO: $peso")
         println("ALTURA: $altura")
         println("IMC: ${calcularImc()}")
-        println("IDADE: ${calcularIdade()}")
+        println("Classificação: ${classificarImc()}")
         println("---------------------------------------")
+    }
+
+    private fun classificarImc(): String{
+
+        val imc = calcularImc()
+        val classificacao: String
+
+        if(imc < 18.5){
+            classificacao = "Abaixo do peso"
+        }else if(imc >= 18.5 &&  imc < 25.0){
+            classificacao = "Peso normal"
+        }else{
+            classificacao = "Acima do peso"
+        }
+        return classificacao
     }
 
     fun calcularIdade():Int{
@@ -29,4 +45,5 @@ class Paciente {
         var idade= Period.between(dataNascimneto,hoje).years
         return idade
     }
+
 }
